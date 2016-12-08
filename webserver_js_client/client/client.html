@@ -1,0 +1,10 @@
+<script>
+
+var xhr = new XMLHttpRequest();
+var url = "http://192.168.3.31/displaydata";
+xhr.open("POST", url);
+var data = {message:"Hello"};
+xhr.send(JSON.stringify(data));
+console.log("DONE");
+
+</script>
