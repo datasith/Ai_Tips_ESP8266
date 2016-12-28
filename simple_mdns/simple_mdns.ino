@@ -1,14 +1,13 @@
 /*------------------------------------------------------------------------------
-  11/01/2016
+  12/28/2016
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: webserver_rx_json.ino
+  File: simple_mdns.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to send JSON-formatted data to a 
-  webserver running on an ESP8266.
-  https://youtu.be/Edbxyl2BhyU
+  Code for YouTube video demonstrating how to use mDNS.
+  
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
   Open-Source projects like this! We'll always put our best effort in every
@@ -21,21 +20,17 @@
 ------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-#include <Servo.h>
-#include <ArduinoJson.h>
+#include <ESP8266mDNS.h>
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
 char* ssid = "YOUR_SSID";
 char* password = "YOUR_PASSWORD";
 
-Servo servo_pan;
-Servo servo_tilt;
+MDNSResponder mdns;
 
 void setup()
 {
-  servo_pan.attach(D1);
-  servo_tilt.attach(D2);
   pinMode(pin_led, OUTPUT);
   WiFi.begin(ssid,password);
   Serial.begin(115200);
@@ -48,10 +43,14 @@ void setup()
   Serial.print("IP Address: ");
   Serial.print(WiFi.localIP());
 
+  if (mdns.begin("esp8266-01", WiFi.localIP()))
+    Serial.println("MDNS responder started");
+
   server.on("/",[](){server.send(200,"text/plain","Hello World!");});
   server.on("/toggle",toggleLED);
-  server.on("/pantilt",setPanTilt);
   server.begin();
+
+  MDNS.addService("http", "tcp", 80);
 }
 
 void loop()
@@ -62,17 +61,5 @@ void loop()
 void toggleLED()
 {
   digitalWrite(pin_led,!digitalRead(pin_led));
-  server.send(204,"");
-}
-
-void setPanTilt()
-{
-  String data = server.arg("plain");
-  StaticJsonBuffer<200> jBuffer;
-  JsonObject& jObject = jBuffer.parseObject(data);
-  String pan = jObject["pan"];
-  String tilt = jObject["tilt"];
-  servo_pan.write(pan.toInt());
-  servo_tilt.write(tilt.toInt());
   server.send(204,"");
 }

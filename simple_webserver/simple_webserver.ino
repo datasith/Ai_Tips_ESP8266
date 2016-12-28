@@ -1,10 +1,30 @@
+/*------------------------------------------------------------------------------
+  10/28/2016
+  Author: Makerbro
+  Platforms: ESP8266
+  Language: C++/Arduino
+  File: simple_webserver.ino
+  ------------------------------------------------------------------------------
+  Description: 
+  Code for YouTube video demonstrating how to set up a webserver.
+  https://youtu.be/m2fEXhl70OY 
+  ------------------------------------------------------------------------------
+  Please consider buying products from ACROBOTIC to help fund future
+  Open-Source projects like this! We'll always put our best effort in every
+  project, and release all our design files and code for you to use. 
+
+  https://acrobotic.com/
+  ------------------------------------------------------------------------------
+  License:
+  Please see attached LICENSE.txt file for details.
+------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "AcroboticGuest";
-char* password = "13meetup37";
+char* ssid = "YOUR_SSID";
+char* password = "YOUR_PASSWORD";
 
 void setup()
 {

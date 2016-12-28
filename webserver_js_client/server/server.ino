@@ -1,3 +1,24 @@
+/*------------------------------------------------------------------------------
+  11/20/2016
+  Author: Makerbro
+  Platforms: ESP8266
+  Language: C++/Arduino
+  File: server.ino
+  ------------------------------------------------------------------------------
+  Description: 
+  Code for YouTube video demonstrating how to use JavaScript to send data to a
+  webserver running on an ESP8266.
+  https://youtu.be/hP3xQtrRMmQ
+  ------------------------------------------------------------------------------
+  Please consider buying products from ACROBOTIC to help fund future
+  Open-Source projects like this! We'll always put our best effort in every
+  project, and release all our design files and code for you to use. 
+
+  https://acrobotic.com/
+  ------------------------------------------------------------------------------
+  License:
+  Please see attached LICENSE.txt file for details.
+------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ACROBOTIC_SSD1306.h>
@@ -5,8 +26,8 @@
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "AcroboticGuest";
-char* password = "13meetup37";
+char* ssid = "YOUR_SSID";
+char* password = "YOUR_PASSWORD";
 
 void setup()
 {
