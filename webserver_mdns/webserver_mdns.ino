@@ -3,11 +3,11 @@
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: simple_mdns.ino
+  File: webserver_mdns.ino
   ------------------------------------------------------------------------------
   Description: 
   Code for YouTube video demonstrating how to use mDNS.
-  
+  https://youtu.be/ewrF1LzrxH8 
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
   Open-Source projects like this! We'll always put our best effort in every
@@ -24,8 +24,8 @@
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "YOUR_SSID";
-char* password = "YOUR_PASSWORD";
+char* ssid = "AcroboticGuest";
+char* password = "13meetup37";
 
 MDNSResponder mdns;
 
