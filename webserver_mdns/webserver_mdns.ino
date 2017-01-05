@@ -24,8 +24,8 @@
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "AcroboticGuest";
-char* password = "13meetup37";
+char* ssid = "YOUR_SSID";
+char* password = "YOUR_PASSWORD";
 
 MDNSResponder mdns;
 
