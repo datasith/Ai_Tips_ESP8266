@@ -40,7 +40,7 @@ void setup()
   }
   Serial.println("");
   Serial.print("IP Address: ");
-  Serial.print(WiFi.localIP());
+  Serial.println(WiFi.localIP());
 
   server.on("/",[](){server.send(200,"text/plain","Hello World!");});
   server.on("/toggle",toggleLED);

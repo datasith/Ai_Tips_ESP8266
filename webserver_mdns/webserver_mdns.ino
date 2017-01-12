@@ -41,7 +41,7 @@ void setup()
   }
   Serial.println("");
   Serial.print("IP Address: ");
-  Serial.print(WiFi.localIP());
+  Serial.println(WiFi.localIP());
 
   if (mdns.begin("esp8266-01", WiFi.localIP()))
     Serial.println("MDNS responder started");
