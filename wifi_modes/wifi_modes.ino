@@ -31,7 +31,7 @@ void setup()
   server.begin();
 
   WiFi.softAPConfig(ip, gateway, subnet);
-  WiFi.softAP(mySsid, password)
+  WiFi.softAP(mySsid, password);
 }
 
 void loop()
