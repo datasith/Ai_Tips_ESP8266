@@ -20,6 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Adafruit_DHT_Library is copyright 2015 Adafruit Industries and released under
-the MIT license.  See more details at its homepage:
-https://github.com/adafruit/DHT-sensor-library
+Ai_Tips_ESP8266 is the copyright (2015) of ACROBOTIC Industries and released 
+under the MIT license.  See more details at its homepage:
+https://github.com/acrobotic/Ai_Tips_ESP8266
