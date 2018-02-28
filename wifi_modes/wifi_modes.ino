@@ -3,9 +3,9 @@
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "AcroboticGuest";
+char* ssid = "NETWORK_SSID";
 char* password = "13meetup37";
-char* mySsid = "AcroboticGuest2";
+char* mySsid = "ESP8266_SSID";
 
 IPAddress ip(192,168,11,4);
 IPAddress gateway(192,168,11,1);
