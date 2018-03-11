@@ -1,3 +1,23 @@
+/*------------------------------------------------------------------------------
+  11/01/2016
+  Author: Makerbro
+  Platforms: ESP8266
+  Language: C++/Arduino
+  File: simple_client.ino
+  ------------------------------------------------------------------------------
+  Description: 
+  Code for YouTube video demonstrating how to run a web client on the ESP8266 to
+  get Weather Data from the Weather Underground API:
+  https://youtu.be/Edbxyl2BhyU
+  ------------------------------------------------------------------------------
+  Please consider buying products from ACROBOTIC to help fund future
+  Open-Source projects like this! We'll always put our best effort in every
+  project, and release all our design files and code for you to use. 
+  https://acrobotic.com/
+  ------------------------------------------------------------------------------
+  License:
+  Please see attached LICENSE.txt file for details.
+------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
