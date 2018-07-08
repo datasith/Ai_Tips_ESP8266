@@ -35,7 +35,7 @@ char webpage[] PROGMEM = R"=====(
 <head>
 </head>
 <body>
-<form action="">
+<form action="/toggle">
 <button> TOGGLE </button>
 </form>
 </body>
