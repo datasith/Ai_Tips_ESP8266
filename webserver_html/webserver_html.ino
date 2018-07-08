@@ -1,14 +1,15 @@
 /*------------------------------------------------------------------------------
-  10/28/2016
+  07/01/2018
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: simple_webserver.ino
+  File: webserver_html.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to set up a web server.
-  https://youtu.be/m2fEXhl70OY
-  
+  Code for YouTube video demonstrating how to use HTML weppages in a web 
+  server's response.
+  https://youtu.be/VNgFbQAVboA
+
   Do you like my videos? You can support the channel on Patreon:
   https://patreon.com/acrobotic
   ------------------------------------------------------------------------------
@@ -29,6 +30,18 @@ uint8_t pin_led = 16;
 char* ssid = "YOUR_SSID";
 char* password = "YOUR_PASSWORD";
 
+char webpage[] PROGMEM = R"=====(
+<html>
+<head>
+</head>
+<body>
+<form action="">
+<button> TOGGLE </button>
+</form>
+</body>
+</html>
+)=====";
+
 void setup()
 {
   pinMode(pin_led, OUTPUT);
@@ -43,7 +56,7 @@ void setup()
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  server.on("/",[](){server.send(200,"text/plain","Hello World!");});
+  server.on("/",[](){server.send(200,"text/html","<h1>Hello World!</h1>");});
   server.on("/toggle",toggleLED);
   server.begin();
 }
@@ -56,5 +69,5 @@ void loop()
 void toggleLED()
 {
   digitalWrite(pin_led,!digitalRead(pin_led));
-  server.send(204,"");
+  server.send_P(200,"text/html",webpage);
 }
