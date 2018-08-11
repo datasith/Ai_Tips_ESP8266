@@ -1,13 +1,13 @@
 /*------------------------------------------------------------------------------
-  07/01/2018
+  08/01/2018
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: webserver_html_js.ino
+  File: webserver_spiffs.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to use JavaScript in HTML weppages
-  that are served in a web server's response.
+  Code for YouTube video demonstrating how to use the File System (SPIFFS) in 
+  Flash Memory to read and write files containing HTML and JavaScript.
   https://youtu.be/ZJoBy2c1dPk
 
   Do you like my videos? You can support the channel on Patreon:
@@ -18,16 +18,17 @@
   project, and release all our design files and code for you to use. 
 
   https://acrobotic.com/
-  https://amazon.com/acrobotic  
+  https://amazon.com/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <FS.h>
 
 ESP8266WebServer server;
-uint8_t pin_led = 16;
+uint8_t pin_led = 2;
 char* ssid = "YOUR_SSID";
 char* password = "YOUR_PASSWORD";
 
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', myFunction, false);
 
 void setup()
 {
+  SPIFFS.begin();
   pinMode(pin_led, OUTPUT);
   WiFi.begin(ssid,password);
   Serial.begin(115200);
@@ -74,7 +76,7 @@ void setup()
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  server.on("/",[](){server.send_P(200,"text/html", webpage);});
+  server.on("/",serveIndexFile);
   server.on("/ledstate",getLEDState);
   server.begin();
 }
@@ -82,6 +84,13 @@ void setup()
 void loop()
 {
   server.handleClient();
+}
+
+void serveIndexFile()
+{
+  File file = SPIFFS.open("/index.html","r");
+  server.streamFile(file, "text/html");
+  file.close();
 }
 
 void toggleLED()
@@ -92,6 +101,6 @@ void toggleLED()
 void getLEDState()
 {
   toggleLED();
-  String led_state = digitalRead(pin_led) ? "ON" : "OFF";
+  String led_state = digitalRead(pin_led) ? "OFF" : "ON";
   server.send(200,"text/plain", led_state);
 }
