@@ -9,11 +9,17 @@
   Code for YouTube video demonstrating how to run a web client on the ESP8266 to
   get Weather Data from the Weather Underground API:
   https://youtu.be/Edbxyl2BhyU
+  
+  Do you like my videos? You can support the channel:
+  https://patreon.com/acrobotic
+  https://paypal.me/acrobotic
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
   Open-Source projects like this! We'll always put our best effort in every
   project, and release all our design files and code for you to use. 
+
   https://acrobotic.com/
+  https://amazon.com/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.

@@ -10,14 +10,16 @@
   server's response.
   https://youtu.be/VNgFbQAVboA
 
-  Do you like my videos? You can support the channel on Patreon:
+  Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
+  https://paypal.me/acrobotic
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
   Open-Source projects like this! We'll always put our best effort in every
   project, and release all our design files and code for you to use. 
 
   https://acrobotic.com/
+  https://amazon.com/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.

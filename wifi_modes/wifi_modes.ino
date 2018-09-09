@@ -1,3 +1,29 @@
+/*------------------------------------------------------------------------------
+  10/28/2016
+  Author: Makerbro
+  Platforms: ESP8266
+  Language: C++/Arduino
+  File: wifi_modes.ino
+  ------------------------------------------------------------------------------
+  Description: 
+  Code for YouTube video demonstrating how  how to use the ESP8266 in two modes 
+  of operation: Station (STA) and Access Point (AP).
+  https://youtu.be/uFjWKhScnVY
+
+  Do you like my videos? You can support the channel:
+  https://patreon.com/acrobotic
+  https://paypal.me/acrobotic
+  ------------------------------------------------------------------------------
+  Please consider buying products from ACROBOTIC to help fund future
+  Open-Source projects like this! We'll always put our best effort in every
+  project, and release all our design files and code for you to use. 
+
+  https://acrobotic.com/
+  https://amazon.com/acrobotic
+  ------------------------------------------------------------------------------
+  License:
+  Please see attached LICENSE.txt file for details.
+------------------------------------------------------------------------------*/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 

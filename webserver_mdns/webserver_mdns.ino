@@ -8,12 +8,17 @@
   Description: 
   Code for YouTube video demonstrating how to use mDNS.
   https://youtu.be/ewrF1LzrxH8 
+
+  Do you like my videos? You can support the channel:
+  https://patreon.com/acrobotic
+  https://paypal.me/acrobotic
   ------------------------------------------------------------------------------
   Please consider buying products from ACROBOTIC to help fund future
   Open-Source projects like this! We'll always put our best effort in every
   project, and release all our design files and code for you to use. 
 
   https://acrobotic.com/
+  https://amazon.com/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.

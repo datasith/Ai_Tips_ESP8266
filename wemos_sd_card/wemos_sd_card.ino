@@ -1,13 +1,14 @@
 /*------------------------------------------------------------------------------
-  10/28/2016
+  09/04/2018
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: simple_webserver.ino
+  File: wemos_sd_card.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to set up a web server.
-  https://youtu.be/m2fEXhl70OY
+  Code for YouTube video demonstrating how how to increase the available memory 
+  of the ESP8266 by using an 8gb micro SD card to store data.
+  https://youtu.be/Hu7Znu5smoo
   
   Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
@@ -23,40 +24,32 @@
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
+#include <SdFat.h>
+#include <DHTesp.h>
 
-ESP8266WebServer server;
-uint8_t pin_led = 16;
-char* ssid = "YOUR_SSID";
-char* password = "YOUR_PASSWORD";
+SdFat sd;
+DHTesp dht;
 
-void setup()
-{
-  pinMode(pin_led, OUTPUT);
-  WiFi.begin(ssid,password);
+void setup() {
+  // put your setup code here, to run once:
   Serial.begin(115200);
-  while(WiFi.status()!=WL_CONNECTED)
-  {
-    Serial.print(".");
-    delay(500);
+  Serial.println("Initializing SD card...");
+  sd.begin(D8);
+  dht.setup(D4, DHTesp::DHT11);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  String dataString = "";
+  float temp = dht.getTemperature();
+  dataString += String(temp);
+  File dataFile = sd.open("temperature.txt", FILE_WRITE);
+  if(dataFile){
+    dataFile.println(dataString);
+    dataFile.close();
+    Serial.println(dataString);
   }
-  Serial.println("");
-  Serial.print("IP Address: ");
-  Serial.println(WiFi.localIP());
+  delay(2000);
 
-  server.on("/",[](){server.send(200,"text/plain","Hello World!");});
-  server.on("/toggle",toggleLED);
-  server.begin();
-}
-
-void loop()
-{
-  server.handleClient();
-}
-
-void toggleLED()
-{
-  digitalWrite(pin_led,!digitalRead(pin_led));
-  server.send(204,"");
 }
