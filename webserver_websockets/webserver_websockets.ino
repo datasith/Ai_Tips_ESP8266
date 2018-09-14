@@ -32,8 +32,8 @@ ESP8266WebServer server;
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 uint8_t pin_led = 2;
-char* ssid = "BEARS";
-char* password = "tenonezero";
+char* ssid = "YOUR_SSID";
+char* password = "YOUR_PASSWORD";
 
 char webpage[] PROGMEM = R"=====(
 <html>
