@@ -6,8 +6,8 @@
   File: wifi_modes.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how  how to use the ESP8266 in two modes 
-  of operation: Station (STA) and Access Point (AP).
+  Code for YouTube video demonstrating how  to use the ESP8266 in two modes of
+  operation: Station (STA) and Access Point (AP).
   https://youtu.be/uFjWKhScnVY
 
   Do you like my videos? You can support the channel:

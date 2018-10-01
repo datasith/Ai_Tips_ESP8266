@@ -1,15 +1,16 @@
 /*------------------------------------------------------------------------------
-  09/04/2018
+  09/20/2018
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: wemos_sd_card.ino
+  File: espX_bmp180_check.ino
   ------------------------------------------------------------------------------
   Description: 
-  Code for YouTube video demonstrating how to increase the available memory of
-  the ESP8266 by using an 8gb micro SD card to store data.
-  https://youtu.be/Hu7Znu5smoo
-  
+  Code for YouTube video demonstrating how to write code that runs on both the
+  ESP8266 and ESP32. In this case, the libraries used have different class
+  methods, thus each board needs to be handled differently.
+  https://youtu.be/1WqyMF6Jcss
+
   Do you like my videos? You can support the channel:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
@@ -24,32 +25,40 @@
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
-#include <SdFat.h>
-#include <DHTesp.h>
 
-SdFat sd;
-DHTesp dht;
+#ifdef ESP8266
+  #include <Adafruit_BMP085.h>
+  Adafruit_BMP085 bmp;  
+#elif defined(ESP32)
+  #include <SFE_BMP180.h>
+  SFE_BMP180 bmp;
+#else
+  #error "Not using ESP8266 or ESP32!"
+#endif
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Serial.println("Initializing SD card...");
-  sd.begin(D8);
-  dht.setup(D4, DHTesp::DHT11);
-
+  bmp.begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  String dataString = "";
-  float temp = dht.getTemperature();
-  dataString += String(temp);
-  File dataFile = sd.open("temperature.txt", FILE_WRITE);
-  if(dataFile){
-    dataFile.println(dataString);
-    dataFile.close();
-    Serial.println(dataString);
-  }
-  delay(2000);
+  double temp = getTemperature();  
+  Serial.print("Temperature = ");
+  Serial.print(temp);
+  Serial.println(" *C");
+  delay(2000); 
+}
 
+double getTemperature()
+{
+  #ifdef ESP8266
+    return bmp.readTemperature();
+  #else
+    double T;
+    delay(bmp.startTemperature());
+    bmp.getTemperature(T);
+    return T;
+  #endif
 }
