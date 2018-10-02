@@ -31,8 +31,8 @@
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 
-const char* ssid = "BEARS";
-const char* password = "tenonezero";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
 void setup() {
   pinMode(2, OUTPUT);

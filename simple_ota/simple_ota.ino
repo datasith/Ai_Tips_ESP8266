@@ -32,8 +32,8 @@
 #include <ArduinoOTA.h>
 #include <ESP8266WebServer.h>
 
-const char* ssid = "BEARS";
-const char* password = "tenonezero";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 ESP8266WebServer server;
 
 bool ota_flag = true;
