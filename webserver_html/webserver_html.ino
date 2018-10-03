@@ -58,7 +58,7 @@ void setup()
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  server.on("/",[](){server.send(200,"text/html",webpage);});
+  server.on("/",[](){server.send(200,"text/html","<h1>Hello World!</h1>");});
   server.on("/toggle",toggleLED);
   server.begin();
 }
