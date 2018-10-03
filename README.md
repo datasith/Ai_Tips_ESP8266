@@ -12,11 +12,9 @@ writing code, and making videos about them:
    * https://www.patreon.com/acrobotic
    * https://www.paypal.me/acrobotic
 
-You can also purchase products from my store to help fund future Open-Source 
-projects like these! I'll always put my best effort in every project, and release 
-all my design files and code for you to use. 
-
-Visit my online shops, which are located at:
+You can also purchase products from my little online shops to help fund future 
+Open-Source projects like these! I'll always put my best effort in every project, 
+and release all my design files and code for you to use. 
 
    * https://acrobotic.com/
    * https://amazon.com/acrobotic
