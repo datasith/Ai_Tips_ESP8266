@@ -3,7 +3,7 @@
   Author: Makerbro
   Platforms: ESP8266
   Language: C++/Arduino
-  File: webserver_html.ino
+  File: webserver_websockets.ino
   ------------------------------------------------------------------------------
   Description: 
   Code for YouTube video demonstrating how to transfer data between a web server
