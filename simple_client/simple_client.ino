@@ -53,8 +53,7 @@ void setup()
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  server.on("/",[](){server.send(200,"text/plain","Hello World!");});
-  server.on("/toggle",toggleLED);
+  server.on("/",[](){server.send(200,"text/plain","Hello simple client!");});
   server.on("/getdata",getData);
   server.begin();
 }
@@ -62,12 +61,6 @@ void setup()
 void loop()
 {
   server.handleClient();
-}
-
-void toggleLED()
-{
-  digitalWrite(pin_led,!digitalRead(pin_led));
-  server.send(204,"");
 }
 
 WiFiClient client;
