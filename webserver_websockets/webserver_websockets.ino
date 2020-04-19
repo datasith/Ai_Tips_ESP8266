@@ -31,7 +31,6 @@
 ESP8266WebServer server;
 WebSocketsServer webSocket = WebSocketsServer(81);
 
-uint8_t pin_led = 2;
 char* ssid = "YOUR_SSID";
 char* password = "YOUR_PASSWORD";
 
@@ -73,7 +72,6 @@ char webpage[] PROGMEM = R"=====(
 
 void setup()
 {
-  pinMode(pin_led, OUTPUT);
   WiFi.begin(ssid,password);
   Serial.begin(115200);
   while(WiFi.status()!=WL_CONNECTED)
