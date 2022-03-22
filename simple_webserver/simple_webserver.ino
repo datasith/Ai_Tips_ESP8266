@@ -28,8 +28,8 @@
 
 ESP8266WebServer server;
 uint8_t pin_led = 16;
-char* ssid = "YOUR_SSID";
-char* password = "YOUR_PASSWORD";
+char* ssid = "BEARS";
+char* password = "tenonezero";
 
 void setup()
 {
