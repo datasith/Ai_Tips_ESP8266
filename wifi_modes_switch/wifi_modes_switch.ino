@@ -112,11 +112,11 @@ void loop()
 void handleSettingsUpdate()
 {
   String data = server.arg("plain");
-  DynamicJsonBuffer jBuffer;
-  JsonObject& jObject = jBuffer.parseObject(data);
+  DynamicJsonDocument jBuffer(1024);
+  DeserializationError error = deserializeJson(jBuffer, data);
 
   File configFile = SPIFFS.open("/config.json", "w");
-  jObject.printTo(configFile);  
+  serializeJson(jBuffer, configFile);
   configFile.close();
   
   server.send(200, "application/json", "{\"status\" : \"ok\"}");
@@ -141,12 +141,16 @@ void wifiConnect()
       configFile.readBytes(buf.get(), size);
       configFile.close();
 
-      DynamicJsonBuffer jsonBuffer;
-      JsonObject& jObject = jsonBuffer.parseObject(buf.get());
-      if(jObject.success())
+      DynamicJsonDocument jsonBuffer(1024);
+      DeserializationError error = deserializeJson(jsonBuffer, buf.get());
+      if(error) 
       {
-        _ssid = jObject["ssid"];
-        _pass = jObject["password"];
+        return   ;
+      } 
+      else 
+      {
+        _ssid = jsonBuffer["ssid"];
+        _pass = jsonBuffer["password"];   
         WiFi.mode(WIFI_STA);
         WiFi.begin(_ssid, _pass);
         unsigned long startTime = millis();
